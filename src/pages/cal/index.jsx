@@ -91,7 +91,6 @@ function Cal(){
             dataIndex: 'edit',
             key: 'edit',
             render: (_, record) =>{
-                console.log(record)
                 return(
                     <div>
                         <Button
