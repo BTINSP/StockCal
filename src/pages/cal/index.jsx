@@ -204,7 +204,12 @@ function Cal(){
     }
 
     function handleDelete(key) {
-        let data = tableData.filter((item) => item.key !== key)
+        let data = []
+        tableData.forEach((item)=> {
+            if (item.key !== key){
+                data.push(item)
+            }
+        })
         setTableData(data)
     }
 
@@ -292,7 +297,7 @@ function Cal(){
                     placeholder="ROE"
                     prefix={<FundTwoTone />}
                     addonAfter = {"%"}
-                    min={1} max={100}
+                    min={1} max={200}
                 >
                 </InputNumber>
                 <br/>
@@ -306,7 +311,7 @@ function Cal(){
                     }}
                     defaultValue = {lowReturnValue}
                     placeholder="目标最低回报率"
-                    min={0} max={100}
+                    min={0} max={200}
                 >
                 </InputNumber>
                 <br/>
