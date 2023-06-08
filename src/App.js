@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import Cal from "./pages/cal";
+import './App.css'
+import { Layout } from 'antd';
+const { Header,Sider, Content } = Layout;
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className = "App">
+        <Layout>
+            <Header style={{
+                height: '3vh',
+                background: '#ffffff'
+            }}
+                    theme={'light'}
+            ></Header>
+            <Layout style={{
+                minHeight: '100vh'
+            }}>
+                <Sider
+                    width={'5%'}
+                    theme={'light'}
+                ></Sider>
+
+
+                <Content>
+                    <Cal></Cal>
+                </Content>
+
+
+                <Sider
+                    width={'5%'}
+                    theme={'light'}
+                ></Sider>
+            </Layout>
+        </Layout>
+
     </div>
   );
 }
