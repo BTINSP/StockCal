@@ -10,27 +10,32 @@ function App() {
         <Layout>
             <Header style={{
                 height: '3vh',
-                background: '#ffffff'
+                background: '#F5F5F5'
             }}
                     theme={'light'}
             ></Header>
-            <Layout style={{
-                minHeight: '100vh'
-            }}>
+            <Layout>
                 <Sider
                     width={'5%'}
-                    theme={'light'}
+                    style={{
+                        background: '#F5F5F5'
+                    }}
                 ></Sider>
 
 
-                <Content>
+                <Content style={{
+                    minWidth: '100vh',
+                    minHeight: '100vh'
+                }}>
                     <Cal></Cal>
                 </Content>
 
 
                 <Sider
                     width={'5%'}
-                    theme={'light'}
+                    style={{
+                        background: '#F5F5F5'
+                    }}
                 ></Sider>
             </Layout>
         </Layout>

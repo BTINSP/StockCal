@@ -390,8 +390,13 @@ function Cal(){
             </Card>
 
 
-            <Card>
+            <Card style={{
+                minWidth: '100vh'
+            }}>
                 <Table
+                    style={{
+                        minWidth: '100vh'
+                    }}
                     bordered = {true}
                     pagination={false}
                     columns={columns}
@@ -403,6 +408,9 @@ function Cal(){
                             ]
                             return(
                                 <Table
+                                    style={{
+                                        minWidth: '100vh'
+                                    }}
                                     bordered = {true}
                                     pagination={false}
                                     columns={subColumns}
