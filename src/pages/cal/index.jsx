@@ -1,4 +1,4 @@
-import { InputNumber,Card, Table,Button } from 'antd';
+import { InputNumber,Card, Table,Button, Row, Col } from 'antd';
 import {PieChartTwoTone, MoneyCollectTwoTone, HourglassTwoTone, FundTwoTone} from "@ant-design/icons"
 import './index.css'
 
@@ -176,6 +176,11 @@ function Cal(){
     const [lowReturnValue, setLowReturnValue] = useState(5)
     const [tableData,setTableData] = useState([])
 
+
+    const [targetReturn, setReturn] = useState()
+    const [targetAsset, setTargetAsset] = useState()
+    const [targetPrice, setTargetPrice] = useState()
+
     function getAssetListOfYear(assetValue,roeValue){
         let data = []
         let assetTemp = Number(assetValue)+ (Number(assetValue) * Number(roeValue))
@@ -210,6 +215,10 @@ function Cal(){
             }
         })
         setTableData(data)
+    }
+
+    function getTargetPrice(){
+
     }
 
     function addTableData() {
@@ -261,74 +270,125 @@ function Cal(){
     return(
         <div>
             <Card>
-                <InputNumber
-                    className = 'inputNormal'
-                    prefix={<MoneyCollectTwoTone />}
-                    addonAfter = {"¥"}
-                    value = {priceValue}
-                    onChange = {(value)=>{
-                        setPriceValue(value)
-                    }}
-                    placeholder="现价"
-                    min={1} max={10000}
-                >
-                </InputNumber>
-                <br/>
-                <InputNumber
-                    className = 'inputNormal'
-                    prefix={<PieChartTwoTone />}
-                    addonAfter = {"¥"}
-                    value = {assetValue}
-                    onChange = {(value)=>{
-                        setAssetValue(value)
-                    }}
-                    placeholder="净资产"
-                    min={1} max={2000}
-                >
-                </InputNumber>
-                <br/>
-                <InputNumber
-                    className = 'inputNormal'
-                    value = {roeValue}
-                    onChange = {(value)=>{
-                        setRoeValue(value)
-                    }}
-                    placeholder="ROE"
-                    prefix={<FundTwoTone />}
-                    addonAfter = {"%"}
-                    min={1} max={200}
-                >
-                </InputNumber>
-                <br/>
-                <InputNumber
-                    className = 'inputNormal'
-                    prefix={<HourglassTwoTone />}
-                    addonAfter = {"%"}
-                    value = {lowReturnValue}
-                    onChange = {(value)=>{
-                        setLowReturnValue(value)
-                    }}
-                    defaultValue = {lowReturnValue}
-                    placeholder="目标最低回报率"
-                    min={0} max={200}
-                >
-                </InputNumber>
-                <br/>
-                <Button
-                    className = 'inputNormal'
-                    type="primary" onClick={addTableData} >添加</Button>
+                <Row gutter={8}>
+                    <Col span={4}>
+                        <Card title="收益率计算">
+                            <InputNumber
+                                className = 'inputNormal'
+                                prefix={<MoneyCollectTwoTone />}
+                                addonAfter = {"¥"}
+                                value = {priceValue}
+                                onChange = {(value)=>{
+                                    setPriceValue(value)
+                                }}
+                                placeholder="现价"
+                                min={1} max={10000}
+                            >
+                            </InputNumber>
+                            <br/>
+                            <InputNumber
+                                className = 'inputNormal'
+                                prefix={<PieChartTwoTone />}
+                                addonAfter = {"¥"}
+                                value = {assetValue}
+                                onChange = {(value)=>{
+                                    setAssetValue(value)
+                                }}
+                                placeholder="净资产"
+                                min={1} max={2000}
+                            >
+                            </InputNumber>
+                            <br/>
+                            <InputNumber
+                                className = 'inputNormal'
+                                value = {roeValue}
+                                onChange = {(value)=>{
+                                    setRoeValue(value)
+                                }}
+                                placeholder="ROE"
+                                prefix={<FundTwoTone />}
+                                addonAfter = {"%"}
+                                min={1} max={200}
+                            >
+                            </InputNumber>
+                            <br/>
+                            <InputNumber
+                                className = 'inputNormal'
+                                prefix={<HourglassTwoTone />}
+                                addonAfter = {"%"}
+                                value = {lowReturnValue}
+                                onChange = {(value)=>{
+                                    setLowReturnValue(value)
+                                }}
+                                defaultValue = {lowReturnValue}
+                                placeholder="目标最低回报率"
+                                min={0} max={200}
+                            >
+                            </InputNumber>
+                            <br/>
+                            <Button
+                                className = 'buttonNormal'
+                                type="primary" onClick={addTableData} >
+                                添加
+                            </Button>
 
-                <Button
-                    className= "buttonNormal"
-                    type="primary" danger onClick={()=>{
-                    setPriceValue()
-                    setAssetValue()
-                    setRoeValue()
-                    setRoeValue()
-                }}>
-                    清空
-                </Button>
+                            <Button
+                                className= "buttonNormal"
+                                type="primary" danger onClick={()=>{
+                                setPriceValue()
+                                setAssetValue()
+                                setRoeValue()
+                                setRoeValue()
+                            }}>
+                                清空
+                            </Button>
+                        </Card>
+                    </Col>
+
+                    {/*<Col span={4}>*/}
+                    {/*    <Card>*/}
+                    {/*        <InputNumber*/}
+                    {/*            className = 'inputNormal'*/}
+                    {/*            prefix={<MoneyCollectTwoTone />}*/}
+                    {/*            addonAfter = {"¥"}*/}
+                    {/*            value = {targetAsset}*/}
+                    {/*            placeholder="每股净资产"*/}
+                    {/*            min={1} max={10000}*/}
+                    {/*        >*/}
+                    {/*        </InputNumber>*/}
+
+                    {/*        <InputNumber*/}
+                    {/*            className = 'inputNormal'*/}
+                    {/*            prefix={<MoneyCollectTwoTone />}*/}
+                    {/*            addonAfter = {"¥"}*/}
+                    {/*            value = {targetReturn}*/}
+                    {/*            placeholder="目标回报率"*/}
+                    {/*            min={1} max={10000}*/}
+                    {/*        >*/}
+                    {/*        </InputNumber>*/}
+
+                    {/*        <InputNumber*/}
+                    {/*            className = 'inputNormal'*/}
+                    {/*            prefix={<MoneyCollectTwoTone />}*/}
+                    {/*            addonAfter = {"¥"}*/}
+                    {/*            value = {targetPrice}*/}
+                    {/*            placeholder="目标价格"*/}
+                    {/*            min={1} max={10000}*/}
+                    {/*        >*/}
+                    {/*        </InputNumber>*/}
+
+                    {/*        <Button*/}
+                    {/*            className = 'inputNormal'*/}
+                    {/*            type="primary" onClick={addTableData} >*/}
+                    {/*            添加*/}
+                    {/*        </Button>*/}
+                    {/*    </Card>*/}
+                    {/*</Col>*/}
+
+
+                </Row>
             </Card>
+
 
             <Card>
                 <Table
